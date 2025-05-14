@@ -1,0 +1,16 @@
+*swp
+.DS_Store
+.#*
+*~
+
+.build
+.cipd
+.gclient_entries
+
+deps/darwin-x86_64/libv8_debug.a
+deps/.gclient_previous*
+deps/go.mod
+c.out
+go.work
+.idea/*
+/v8go.test
