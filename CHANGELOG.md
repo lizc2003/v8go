@@ -8,6 +8,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [v0.33.0] - 2025-05-15
+
+### Added
+- Add support for `FunctionTemplate.Inherit` to set up prototype inheritance.
+
+### Changed
+- Auto-bumped V8 to 13.6.233.10.
+
+## [v0.32.0] - 2025-04-30
+
+### Changed
+- Auto-bumped V8 to 13.6.233.8.
+
+## [v0.31.0] - 2025-04-02
+
+### Changed
+- Auto-bumped V8 to 13.5.212.10.
+
+## [v0.30.0] - 2025-02-26
+
+### Changed
+- Auto-bumped V8 to 13.3.415.23.
+
 ## [v0.29.0] - 2025-02-19
 
 ### Added
