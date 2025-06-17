@@ -147,7 +147,7 @@ func (i *Isolate) WriteSnapshot(filename string) error {
 	if errNum == 0 {
 		return nil
 	}
-	return fmt.Errorf("errno: %d", errNum)
+	return fmt.Errorf("errno: %d", int(errNum))
 }
 
 // Dispose will dispose the Isolate VM; subsequent calls will panic.
