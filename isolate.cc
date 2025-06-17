@@ -129,6 +129,11 @@ extern int IsolateWriteSnapshot(IsolatePtr iso, const char* filename) {
     return errno;
   }
 
+  Locker locker(iso);
+  Isolate::Scope isolate_scope(iso);
+  // Create a stack-allocated handle scope.
+  HandleScope handle_scope(iso);
+
   const v8::HeapSnapshot* snap = iso->GetHeapProfiler()->TakeHeapSnapshot();
   FileOutputStream stream(fp);
   snap->Serialize(&stream, v8::HeapSnapshot::kJSON);
