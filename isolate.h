@@ -58,7 +58,8 @@ extern RtnUnboundScript IsolateCompileUnboundScript(IsolatePtr iso_ptr,
                                                     const char* origin,
                                                     CompileOptions options);
 
-extern int IsolateWriteSnapshot(IsolatePtr ptr, const char* filename, int bForceGc);
+extern void IsolateFullGC(IsolatePtr ptr);
+extern int IsolateWriteSnapshot(IsolatePtr ptr, const char* filename, int bForceGC);
 
 #ifdef __cplusplus
 }  // extern "C"

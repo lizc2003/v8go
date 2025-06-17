@@ -119,7 +119,14 @@ IsolateHStatistics IsolationGetHeapStatistics(IsolatePtr iso) {
                             hs.number_of_detached_contexts()};
 }
 
-int IsolateWriteSnapshot(IsolatePtr iso, const char* filename, int bForceGc) {
+void IsolateFullGC(IsolatePtr iso) {
+  if (iso == nullptr) {
+    return;
+  }
+  iso->LowMemoryNotification();
+}
+
+int IsolateWriteSnapshot(IsolatePtr iso, const char* filename, int bForceGC) {
   if (iso == nullptr) {
     return 1;
   }
@@ -129,7 +136,7 @@ int IsolateWriteSnapshot(IsolatePtr iso, const char* filename, int bForceGc) {
     return errno;
   }
 
-  if (bForceGc) {
+  if (bForceGC) {
     // force garbage collection
     iso->LowMemoryNotification();
   }
