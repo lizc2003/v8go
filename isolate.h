@@ -58,6 +58,8 @@ extern RtnUnboundScript IsolateCompileUnboundScript(IsolatePtr iso_ptr,
                                                     const char* origin,
                                                     CompileOptions options);
 
+extern int IsolateWriteSnapshot(IsolatePtr ptr, const char* filename);
+
 #ifdef __cplusplus
 }  // extern "C"
 #endif
