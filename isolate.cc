@@ -119,7 +119,7 @@ IsolateHStatistics IsolationGetHeapStatistics(IsolatePtr iso) {
                             hs.number_of_detached_contexts()};
 }
 
-extern int IsolateWriteSnapshot(IsolatePtr iso, const char* filename) {
+int IsolateWriteSnapshot(IsolatePtr iso, const char* filename) {
   if (iso == nullptr) {
     return 1;
   }
@@ -128,6 +128,9 @@ extern int IsolateWriteSnapshot(IsolatePtr iso, const char* filename) {
   if (fp == NULL) {
     return errno;
   }
+
+  // force garbage collection
+  iso->LowMemoryNotification();
 
   Locker locker(iso);
   Isolate::Scope isolate_scope(iso);
