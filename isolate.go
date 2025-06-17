@@ -140,10 +140,15 @@ func (i *Isolate) GetHeapStatistics() HeapStatistics {
 	}
 }
 
-func (i *Isolate) WriteSnapshot(filename string) error {
+func (i *Isolate) WriteSnapshot(filename string, bForceGc bool) error {
 	cFilename := C.CString(filename)
 	defer C.free(unsafe.Pointer(cFilename))
-	errNum := C.IsolateWriteSnapshot(i.ptr, cFilename)
+	nForceGc := C.int(0)
+	if bForceGc {
+		nForceGc = C.int(1)
+	}
+
+	errNum := C.IsolateWriteSnapshot(i.ptr, cFilename, nForceGc)
 	if errNum == 0 {
 		return nil
 	}
